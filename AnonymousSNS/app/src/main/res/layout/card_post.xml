@@ -113,18 +113,7 @@
             app:layout_constraintTop_toTopOf="@+id/clockImage"
             />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:id="@+id/commentImage"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:adjustViewBounds="true"
-            app:layout_constraintBottom_toBottomOf="@+id/clockImage"
-            app:layout_constraintEnd_toStartOf="@id/commentCountText"
-            app:layout_constraintTop_toTopOf="@+id/clockImage"
-            app:srcCompat="@drawable/comment"
-            />
+
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
