@@ -12,15 +12,16 @@ import androidx.recyclerview.widget.RecyclerView
 /**
  * Created by yongyi on 2017-11-27.
  */
-class RvAdapter(
-    val context: Context, val todoList: ArrayList<Todo>
-
-
-    private val context: Int,
-    private val items: List<Int>,
-    private val i: Int
-) :
+class RvAdapter(context: Context, items : List<Todo>) :
     RecyclerView.Adapter<RvAdapter.CustomViewHolder>() {
+    private var context : Context
+    private var items : List<Todo>
+
+    init {
+        this.context = context
+        this.items = items
+    }
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int

@@ -25,7 +25,7 @@
         android:text="ADD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/main_rv" />
+        app:layout_constraintTop_toTopOf="@+id/main_view" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/main_write_btn"

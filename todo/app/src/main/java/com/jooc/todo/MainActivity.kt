@@ -9,17 +9,42 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.list_item.*
 
 
 class MainActivity : AppCompatActivity() {
 
 
-    var todoList = arrayListOf<Todo>(
-        Todo("다이소","물통사기"),
-        Todo("맥도날드","햄버거사기"),
-        Todo("애플","에어팟 수리")
+    private var memos = ArrayList<Todo>();
+    private val llm = LinearLayoutManager(this)
 
-    )
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        main_view.setHasFixedSize(true)
+        main_view.layoutManager = llm
+
+        main_btn_add.setOnClickListener{
+            var title : String  = item_tv_title.text.toString()
+            var content : String = item_tv_content.text.toString()
+
+            var memo = Todo(title,content)
+            memos.add(memo)
+
+            item_tv_title.setText("")
+            item_tv_content.setText("")
+
+            main_view.adapter = RvAdapter(applicationContext, memos)
+        }
+    }
+}
+//    var todoList = arrayListOf<Todo>(
+//        Todo("다이소","물통사기"),
+//        Todo("맥도날드","햄버거사기"),
+//        Todo("애플","에어팟 수리")
+//
+//    )
 
 //    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
 //        super.onCreate(savedInstanceState, persistentState)
@@ -35,33 +60,33 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private var rv: RecyclerView? = null
-    private var llm: LinearLayoutManager? = null
-    private var count: MutableList<Int>? = null
-    private var i = 0
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        rv = findViewById<View>(R.id.main_view) as RecyclerView
-        llm = LinearLayoutManager(this)
-        count = ArrayList()
-        rv!!.setHasFixedSize(true)
-        rv!!.layoutManager = llm
-
-        main_write_btn.setOnClickListener{
-            startActivity(Intent(this@MainActivity, writing::class.java))
-        }
-    }
-
-    fun onClick(view: View) {
-        when (view.id) {
-            R.id.main_write_btn -> {
-                i++
-                count!!.add(i)
-                val adapter = RvAdapter(application,todoList,count,i)
-                rv!!.adapter = adapter
-                Log.d("Count", count.toString() + "")
-            }
-        }
-    }
-}
+//    private var rv: RecyclerView? = null
+//    private var llm: LinearLayoutManager? = null
+//    private var count: MutableList<Int>? = null
+//    private var i = 0
+//    override fun onCreate(savedInstanceState: Bundle?) {
+//        super.onCreate(savedInstanceState)
+//        setContentView(R.layout.activity_main)
+//        rv = findViewById<View>(R.id.main_view) as RecyclerView
+//        llm = LinearLayoutManager(this)
+//        count = ArrayList()
+//        rv!!.setHasFixedSize(true)
+//        rv!!.layoutManager = llm
+//
+//        main_write_btn.setOnClickListener{
+//            startActivity(Intent(this@MainActivity, writing::class.java))
+//        }
+//    }
+//
+//    fun onClick(view: View) {
+//        when (view.id) {
+//            R.id.main_btn_add -> {
+//                i++
+//                count!!.add(i)
+//                val adapter = RvAdapter(application, count, i)
+//                rv!!.adapter = adapter
+//                Log.d("Count", count.toString() + "")
+//            }
+//        }
+//    }
+//}
