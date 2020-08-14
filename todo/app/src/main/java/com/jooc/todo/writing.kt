@@ -12,13 +12,16 @@ class writing : AppCompatActivity() {
         setContentView(R.layout.activity_writing)
 
         ic_done.setOnClickListener{
-//            val place = placeInput.text.toString()
-//            val todo = todoInput.text.toString()
+            val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("place_text", placeInput.toString())
+            intent.putExtra("todo_text", todoInput.toString())
+            startActivity(intent)
         }
 
         ic_return.setOnClickListener{
             onBackPressed()
         }
+
     }
 
     override fun onBackPressed() {

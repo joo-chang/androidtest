@@ -2,12 +2,8 @@ package com.jooc.todo
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.util.Log
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.list_item.*
 
@@ -25,17 +21,22 @@ class MainActivity : AppCompatActivity() {
         main_view.setHasFixedSize(true)
         main_view.layoutManager = llm
 
-        main_btn_add.setOnClickListener{
-            var title : String  = item_tv_title.text.toString()
-            var content : String = item_tv_content.text.toString()
-
-            var memo = Todo(title,content)
+        main_write_btn.setOnClickListener{
+//            var title : String  = item_tv_title.text.toString()
+//            var content : String = item_tv_content.text.toString()
+            startActivity(Intent(this,writing::class.java))
+            finish()
+            var memo = Todo(intent.getStringExtra("place_text"),intent.getStringExtra("todo_text"))
             memos.add(memo)
 
             item_tv_title.setText("")
             item_tv_content.setText("")
 
             main_view.adapter = RvAdapter(applicationContext, memos)
+        }
+
+        if(intent.hasExtra("place_text")){
+
         }
     }
 }

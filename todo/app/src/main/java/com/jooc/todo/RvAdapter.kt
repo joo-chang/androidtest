@@ -1,6 +1,7 @@
 package com.jooc.todo
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,9 +36,9 @@ class RvAdapter(context: Context, items : List<Todo>) :
         holder: CustomViewHolder,
         position: Int
     ) {
-        val item = items[position]
-        holder.title.text = item.toString() + ""
-        holder.content.text = item.toString() + "content"
+
+        holder.title.text =
+        holder.content.text =
     }
 
     override fun getItemCount(): Int {
