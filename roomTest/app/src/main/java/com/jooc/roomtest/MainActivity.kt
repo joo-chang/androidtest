@@ -9,21 +9,21 @@ import androidx.room.Room
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-    private var catDb : CatDB? = null
-    private var catList = listOf<Cat>()
-    lateinit var mAdapter : CatAdapter
+    private var todoDb : TodoDB? = null
+    private var todoList = listOf<Todo>()
+    lateinit var mAdapter : TodoAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        catDb = CatDB.getInstance(this)
-        mAdapter = CatAdapter(this, catList)
+        todoDb = TodoDB.getInstance(this)
+        mAdapter = TodoAdapter(this, todoList)
 
         val r = Runnable {
             try {
-                catList = catDb?.catDao()?.getAll()!!
-                mAdapter = CatAdapter(this, catList)
+                todoList = todoDb?.todoDao()?.getAll()!!
+                mAdapter = TodoAdapter(this, todoList)
                 mAdapter.notifyDataSetChanged()
 
                 mRecyclerView.adapter = mAdapter
@@ -40,14 +40,13 @@ class MainActivity : AppCompatActivity() {
         mAddBtn.setOnClickListener {
             val i = Intent(this, AddActivity::class.java)
             startActivity(i)
-            finish()
         }
 
     }
 
     override fun onDestroy() {
-        CatDB.destroyInstance()
-        catDb = null
+        TodoDB.destroyInstance()
+        todoDb = null
         super.onDestroy()
     }
 }
