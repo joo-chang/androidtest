@@ -104,7 +104,7 @@
                     android:id="@+id/item_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{post.todoMessage}"
+                    android:text="할 일"
                     android:textSize="25dp"
                     android:textStyle="bold" />
 
@@ -125,7 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:text="@{post.placeMessage}"
+                        android:text="장소"
                         android:textSize="20dp" />
                 </LinearLayout>
 
